@@ -10,10 +10,7 @@ export async function POST(request: Request) {
     const { key, value } = await request.json();
 
     if (!key || !value) {
-      return Response.json(
-        { error: "Key and value are required" },
-        { status: 400 }
-      );
+      return null;
     }
 
     const result = await redis.set(key, value);
@@ -26,12 +23,6 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error("Redis SET error:", error);
-    return Response.json(
-      {
-        error: "Failed to set data in Redis",
-        details: error instanceof Error ? error.message : "Unknown error",
-      },
-      { status: 500 }
-    );
+    return error;
   }
 }

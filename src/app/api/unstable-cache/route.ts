@@ -2,17 +2,17 @@ import { unstable_cache } from "next/cache";
 
 const getCachedData = unstable_cache(
   async () => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     return {
       timestamp: new Date().toISOString(),
-      data: "This is cached data from unstable_cache",
       random: Math.random(),
     };
   },
   ["demo-cache"],
   {
     revalidate: 30,
+    tags: ["demo-cache-tag"],
   },
 );
 

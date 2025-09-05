@@ -11,27 +11,17 @@ export async function GET(request: Request) {
     const key = searchParams.get("key");
 
     if (!key) {
-      return Response.json(
-        { error: "Key parameter is required" },
-        { status: 400 }
-      );
+      return null;
     }
 
     const value = await redis.get(key);
     return Response.json({
       key,
       value,
-      found: value !== null,
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
     console.error("Redis GET error:", error);
-    return Response.json(
-      {
-        error: "Failed to get data from Redis",
-        details: error instanceof Error ? error.message : "Unknown error",
-      },
-      { status: 500 }
-    );
+    return error;
   }
 }

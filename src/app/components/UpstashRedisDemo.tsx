@@ -43,7 +43,7 @@ export default function UpstashRedisDemo() {
   };
 
   return (
-    <div className="border rounded-lg p-6 bg-white dark:bg-gray-800">
+    <div className="border   p-6 bg-white dark:bg-gray-800">
       <h2 className="text-xl font-bold mb-4">Upstash Redis Demo</h2>
       <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
         Upstash Redisを使用したキーバリューストアのデモ
@@ -55,14 +55,14 @@ export default function UpstashRedisDemo() {
           placeholder="Key"
           value={key}
           onChange={(e) => setKey(e.target.value)}
-          className="border rounded px-3 py-2 dark:bg-gray-700 dark:border-gray-600"
+          className="border px-3 py-2 "
         />
         <input
           type="text"
           placeholder="Value"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="border rounded px-3 py-2 dark:bg-gray-700 dark:border-gray-600"
+          className="border px-3 py-2 "
         />
       </div>
 
@@ -71,17 +71,17 @@ export default function UpstashRedisDemo() {
           type="button"
           onClick={setRedisData}
           disabled={loading}
-          className="bg-green-500 hover:bg-green-600 disabled:bg-green-300 text-white px-4 py-2 rounded"
+          className="bg-green-500  text-white px-4 py-2 rounded"
         >
-          {loading ? "Loading..." : "Set Data"}
+          {loading ? "Loading..." : "set"}
         </button>
         <button
           type="button"
           onClick={getRedisData}
           disabled={loading}
-          className="bg-blue-500 hover:bg-blue-600 disabled:bg-blue-300 text-white px-4 py-2 rounded"
+          className="bg-blue-500  text-white px-4 py-2 rounded"
         >
-          {loading ? "Loading..." : "Get Data"}
+          {loading ? "Loading..." : "get"}
         </button>
       </div>
 
